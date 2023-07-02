@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = {
   api: require('./api'),
@@ -6,5 +6,5 @@ module.exports = {
   user: require('./user'),
   message: require('./message'),
   inbox: require('./inbox'),
-  webfinger: require('./webfinger'),
-};
+  webfinger: require('./webfinger')
+}
