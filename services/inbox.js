@@ -64,12 +64,4 @@ function sendAcceptMessage (thebody, name, domain, req, res, targetDomain) {
   signAndSend(message, name, domain, req, res, targetDomain)
 }
 
-function parseJSON (text) {
-  try {
-    return JSON.parse(text)
-  } catch (e) {
-    return null
-  }
-}
-
-module.exports = { parseJSON, sendAcceptMessage }
+module.exports = { sendAcceptMessage }
