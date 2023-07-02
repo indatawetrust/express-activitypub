@@ -1,6 +1,7 @@
 'use strict'
 const crypto = require('crypto')
 const request = require('request')
+const { randomHash } = require('../utils')
 
 function signAndSend (message, name, domain, req, res, targetDomain) {
   // get the URI of the actor object and append 'inbox' to it
@@ -53,7 +54,7 @@ function signAndSend (message, name, domain, req, res, targetDomain) {
 }
 
 function sendAcceptMessage (thebody, name, domain, req, res, targetDomain) {
-  const guid = crypto.randomBytes(16).toString('hex')
+  const guid = randomHash()
   const message = {
     '@context': 'https://www.w3.org/ns/activitystreams',
     id: `https://${domain}/${guid}`,

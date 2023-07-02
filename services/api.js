@@ -2,6 +2,7 @@
 
 const request = require('request')
 const crypto = require('crypto')
+const { randomHash } = require('../utils')
 
 function signAndSend (message, name, domain, req, _res, targetDomain, inbox) {
   // get the private key
@@ -52,8 +53,8 @@ function signAndSend (message, name, domain, req, _res, targetDomain, inbox) {
 }
 
 function createMessage (text, name, domain, req, _res, follower) {
-  const guidCreate = crypto.randomBytes(16).toString('hex')
-  const guidNote = crypto.randomBytes(16).toString('hex')
+  const guidCreate = randomHash()
+  const guidNote = randomHash()
   const db = req.app.get('db')
   const d = new Date()
 

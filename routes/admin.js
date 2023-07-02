@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 const crypto = require('crypto')
 const { createActor, createWebfinger } = require('../services/admin')
+const { randomHash } = require('../utils')
 
 router.post('/create', function (req, res) {
   // pass in a name for an account, if the account doesn't exist, create it!
@@ -31,7 +32,7 @@ router.post('/create', function (req, res) {
     (err, publicKey, privateKey) => {
       const actorRecord = createActor(account, domain, publicKey)
       const webfingerRecord = createWebfinger(account, domain)
-      const apikey = crypto.randomBytes(16).toString('hex')
+      const apikey = randomHash()
 
       if (err) {
         return res.status(400).json({ error: err })
